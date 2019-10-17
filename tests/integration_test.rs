@@ -16,7 +16,10 @@ const SIMPLE: &str = r#"
 
 #[test]
 fn test_simple_size() {
-    pretty_assert_eq!(SIMPLE.trim_start_matches('\n'), &lcd::run(123456789, 10, 1, 1))
+    pretty_assert_eq!(
+        SIMPLE.trim_start_matches('\n'),
+        &lcd::run(123456789, 10, 1, 1)
+    )
 }
 
 const DOUBLE: &str = r#"
@@ -29,7 +32,10 @@ const DOUBLE: &str = r#"
 
 #[test]
 fn test_double_size() {
-    pretty_assert_eq!(DOUBLE.trim_start_matches('\n'), &lcd::run(123456789, 10, 2, 2))
+    pretty_assert_eq!(
+        DOUBLE.trim_start_matches('\n'),
+        &lcd::run(123456789, 10, 2, 2)
+    )
 }
 
 #[derive(PartialEq, Eq)]

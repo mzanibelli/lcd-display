@@ -10,8 +10,8 @@ pub fn run(n: u64, padding: usize, width: usize, height: usize) -> String {
 
     // Then, the next rows are variable in height, but only the last
     // subrow of each one of them must contain horizontal separators.
-		variable_height_row(&mut result, &rows[1], width, height);
-		variable_height_row(&mut result, &rows[2], width, height);
+    variable_height_row(&mut result, &rows[1], width, height);
+    variable_height_row(&mut result, &rows[2], width, height);
 
     result
 }
