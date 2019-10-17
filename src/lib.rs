@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 pub fn run(n: u64, padding: usize, width: usize, height: usize) -> String {
-    let mut result = String::from("\n");
+    let mut result = String::new();
 
     let rows = as_rows(n, padding, char_map());
 
@@ -10,16 +10,17 @@ pub fn run(n: u64, padding: usize, width: usize, height: usize) -> String {
 
     // Then, the next rows are variable in height, but only the last
     // subrow of each one of them must contain horizontal separators.
-    for _ in 0..height - 1 {
-        result.push_str(&middle_row(&rows[1], width));
-    }
-    result.push_str(&bottom_row(&rows[1], width));
-    for _ in 0..height - 1 {
-        result.push_str(&middle_row(&rows[2], width));
-    }
-    result.push_str(&bottom_row(&rows[2], width));
+		variable_height_row(&mut result, &rows[1], width, height);
+		variable_height_row(&mut result, &rows[2], width, height);
 
     result
+}
+
+fn variable_height_row(result: &mut String, row: &[bool], width: usize, height: usize) {
+    for _ in 0..height - 1 {
+        result.push_str(&middle_row(&row, width));
+    }
+    result.push_str(&bottom_row(&row, width));
 }
 
 fn as_rows(n: u64, padding: usize, map: HashMap<String, u8>) -> [Vec<bool>; 3] {
